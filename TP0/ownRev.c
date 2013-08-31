@@ -103,6 +103,13 @@ char* readFromStdin() {
 	
 }
 
+/*
+ * Reads a line from the given filePtr. If the line is empty,
+ * returns NULL. If the line is not empty, returns a reference
+ * to the string. reference must be freed after.
+ * 
+ * filePtr: filePtr to be read.
+ */
 char* readFromFile(FILE* filePtr) {
 	
 	// Initial buffer length.
@@ -141,6 +148,13 @@ char* readFromFile(FILE* filePtr) {
 	
 }
 
+/*
+ * Prints the output of the given file after its lines were
+ * reversed. File pointer must be already opened for reading
+ * and must be closed after this call.
+ * 
+ * fPtr: file to be reversed.
+ */
 void reverseFile(FILE* fPtr) {
 	
 	char* reversed = NULL;
@@ -171,7 +185,7 @@ int main(int argc, char** argv) {
 		return 0;
 	}
 	
-	// Options may have been passed.
+	// Option may have been passed.
 	if( argc == 2 ) {
 		// Option was matched.
 		if( checkOption(argv[1]) ) return 0;
