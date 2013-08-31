@@ -9,16 +9,20 @@
  * 
  * attr: The string with the option received.
  */ 
-void checkOption(char* attr) {
+int checkOption(char* attr) {
 	
 	// Match version option.
 	if( !strcmp(attr, "-v") || !strcmp(attr, "--version") ) {
 		printf("Version 1.0.0\n");
+		return 1;
 	}
 	// Match help option.
 	else if ( !strcmp(attr, "-h") || !strcmp(attr, "--help") ) {
 		printf("Usage\n");
+		return 1;
 	}
+	
+	return 0;
 	
 }
 /*
@@ -99,23 +103,66 @@ char* readFromStdin() {
 	
 }
 
+char* readFromFile(FILE* filePtr) {
+	
+	// Initial buffer length.
+	unsigned bufferLength = 30;
+	// Allocate memory for buffer length and \0 terminator.
+	char* finalString = (char*) malloc( (bufferLength + 2) * sizeof(char) );
+	
+	// Initialize aux variables.
+	char* auxString = NULL;
+	char character = 0;
+	int length = 0;
+	
+	// Parse stdin until we get \n (should be EOF).
+	while( (character = fgetc(filePtr)) != EOF ) {	
+		length++;
+		// Buffer has been filled. Allocate more memory.
+		if( (length + 1) == bufferLength ) {
+			bufferLength =  2 * bufferLength;
+			auxString = (char*) realloc( finalString, bufferLength * sizeof(char) );
+			finalString = auxString;
+		}
+		finalString[length-1] = character;
+		if( character == '\n' ) break;
+	}
+	
+	// Only for \n purposes.
+	finalString[length++] = '\0';
+	
+	auxString = (char*) realloc( finalString, length * sizeof(char) );
+	return auxString;
+	
+}
+
 int main(int argc, char** argv) {
 	
 	char* stdinString = NULL;
+	char* fileString = NULL;
 	char* reversed = NULL;
 	
 	// Rev from stdin.
 	if( argc == 1 ) {
 		stdinString = readFromStdin();
 		reversed = reverseString(stdinString);
-		printf("%s", reversed);
+		printf("%s", stdinString);
 		free(stdinString);
 		free(reversed);
 	}
 	
 	// Options may have been passed.
 	if( argc == 2 ) {
-		checkOption(argv[1]);
+		// No option was matched (only one file to reverse)
+		if( !checkOption(argv[1]) ) {
+			FILE* fPtr = fopen(argv[1], "r");
+			fileString = readFromFile(fPtr);
+			reversed = reverseString(fileString);
+			printf("%s", reversed);
+			free(fileString);
+			free(reversed);
+			fclose(fPtr);
+		}
 	}
 	
 	return 0;
