@@ -131,16 +131,35 @@ char* readFromFile(FILE* filePtr) {
 	// Only for \n purposes.
 	finalString[length++] = '\0';
 	
+	if( length == 1 ) {
+		free(finalString);
+		return NULL;
+	}
+	
 	auxString = (char*) realloc( finalString, length * sizeof(char) );
 	return auxString;
 	
 }
 
+void reverseFile(FILE* fPtr) {
+	
+	char* reversed = NULL;
+	char* fileString = readFromFile(fPtr);
+	
+	while( fileString != NULL ) {
+		reversed = reverseString(fileString);
+		printf("%s", reversed);
+		free(fileString);
+		free(reversed);
+		fileString = readFromFile(fPtr);
+	}
+}
+
 int main(int argc, char** argv) {
 	
 	char* stdinString = NULL;
-	char* fileString = NULL;
 	char* reversed = NULL;
+	FILE* fPtr = NULL;
 	
 	// Rev from stdin.
 	if( argc == 1 ) {
@@ -149,20 +168,19 @@ int main(int argc, char** argv) {
 		printf("%s", stdinString);
 		free(stdinString);
 		free(reversed);
+		return 0;
 	}
 	
 	// Options may have been passed.
 	if( argc == 2 ) {
-		// No option was matched (only one file to reverse)
-		if( !checkOption(argv[1]) ) {
-			FILE* fPtr = fopen(argv[1], "r");
-			fileString = readFromFile(fPtr);
-			reversed = reverseString(fileString);
-			printf("%s", reversed);
-			free(fileString);
-			free(reversed);
-			fclose(fPtr);
-		}
+		// Option was matched.
+		if( checkOption(argv[1]) ) return 0;
+	}
+	
+	for( unsigned i = 1 ; i < argc ; i++ ) {
+		fPtr = fopen(argv[i], "r");
+		reverseFile(fPtr);
+		fclose(fPtr);
 	}
 	
 	return 0;
