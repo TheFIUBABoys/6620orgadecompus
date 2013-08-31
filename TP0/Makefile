@@ -4,6 +4,7 @@ CC=gcc
 INPUT=ownRev.c
 MIDDLEFILE=ownRev.o
 EXEC=ownRev
+TESTSCRIPT=tests.sh
 
 all: $(EXEC) clean
 
@@ -18,6 +19,10 @@ $(EXEC): $(MIDDLEFILE)
 .SILENT:	
 run:
 	./$(EXEC)
+
+.SILENT:
+runTests:
+	./$(TESTSCRIPT)
 
 .SILENT:
 memCheck:
