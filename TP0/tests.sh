@@ -14,5 +14,7 @@ do
 	else
 		echo "[OK] $f was reversed correctly"
 	fi
+	rm auxRev
+	rm doubleRev
 done
 
