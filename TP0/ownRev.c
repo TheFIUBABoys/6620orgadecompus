@@ -121,30 +121,15 @@ char* readFromFile(FILE* filePtr) {
 void reverseFile(FILE* fPtr) {
 	
 	char* reversed = NULL;
-	char* buffer = NULL;
 	char* fileString = readFromFile(fPtr);
-	char* aux = NULL;
 	
 	while( fileString != NULL ) {
 		reversed = reverseString(fileString);
-		if( buffer == NULL ) {
-			buffer = (char*) malloc( (1 + strlen(reversed)) * sizeof(char) );
-			strcpy(buffer, reversed);
-		} else {
-			aux = (char*) malloc((1 + strlen(reversed) + strlen(buffer)) * sizeof(char));
-			strcpy(aux, "");
-			strcat(aux, buffer);
-			strcat(aux, reversed);
-			free(buffer);
-			buffer = aux;
-		}
+		printf("%s", reversed);
 		free(fileString);
 		free(reversed);
 		fileString = readFromFile(fPtr);
 	}
-	
-	printf("\n%s", buffer);
-	free(buffer);
 	
 }
 
