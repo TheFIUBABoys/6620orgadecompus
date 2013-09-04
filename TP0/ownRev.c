@@ -83,7 +83,8 @@ char* readFromStdin() {
 	int length = 0;
 	
 	// Parse stdin until we get \n (should be EOF).
-	while( (character = getchar()) != '\n' ) {	
+	while( (character = getchar()) != EOF ) {	
+	//while( (character = getchar()) != '\n' ) {	
 		length++;
 		// Buffer has been filled. Allocate more memory.
 		if( (length + 2) == bufferLength ) {
@@ -95,7 +96,7 @@ char* readFromStdin() {
 	}
 	
 	// Only for \n purposes.
-	finalString[length++] = character;
+	//finalString[length++] = character;
 	finalString[length++] = '\0';
 	
 	auxString = (char*) realloc( finalString, length * sizeof(char) );

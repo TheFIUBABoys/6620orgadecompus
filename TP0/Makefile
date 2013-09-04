@@ -26,7 +26,7 @@ runTests:
 
 .SILENT:
 memCheck:
-	$(MEMFLAGS) ./$(EXEC)
+	$(MEMFLAGS) ./$(EXEC) test test1 test2
 
 .SILENT:
 clean:
