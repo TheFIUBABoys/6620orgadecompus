@@ -132,6 +132,7 @@ void reverseFile(FILE* fPtr) {
 			strcpy(buffer, reversed);
 		} else {
 			aux = (char*) malloc((1 + strlen(reversed) + strlen(buffer)) * sizeof(char));
+			strcpy(aux, "");
 			strcat(aux, buffer);
 			strcat(aux, reversed);
 			free(buffer);
