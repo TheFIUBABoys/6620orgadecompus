@@ -4,7 +4,7 @@ CC=gcc
 INPUT=ownRev.c
 MIDDLEFILE=ownRev.o
 EXEC=ownRev
-TESTSCRIPT=tests.sh
+TESTSCRIPT=TestFiles/tests.sh
 
 all: $(EXEC) clean
 
@@ -26,7 +26,7 @@ runTests:
 
 .SILENT:
 memCheck:
-	$(MEMFLAGS) ./$(EXEC) test test1 test2
+	$(MEMFLAGS) ./$(EXEC) TestFiles/test TestFiles/test1 TestFiles/test2
 
 .SILENT:
 clean:

@@ -1,7 +1,7 @@
 #!/bin/bash
-FILES="test
-test1
-test2"
+FILES="TestFiles/test
+TestFiles/test1
+TestFiles/test2"
 
 for f in $FILES
 do
