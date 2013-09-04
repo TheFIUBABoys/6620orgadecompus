@@ -67,44 +67,6 @@ char* reverseString(char* source) {
 }
 
 /*
- * Reads one character at a time from STDIN and stores the result in
- * a new space of memory. Returns the reference to this new string.
- */
-char* readFromStdin() {
-	
-	// Initial buffer length.
-	unsigned bufferLength = 30;
-	// Allocate memory for buffer length and \0 terminator.
-	char* finalString = (char*) malloc( (bufferLength + 2) * sizeof(char) );
-	
-	// Initialize aux variables.
-	char* auxString = NULL;
-	char character = 0;
-	int length = 0;
-	
-	// Parse stdin until we get \n (should be EOF).
-	while( (character = getchar()) != EOF ) {	
-	//while( (character = getchar()) != '\n' ) {	
-		length++;
-		// Buffer has been filled. Allocate more memory.
-		if( (length + 2) == bufferLength ) {
-			bufferLength =  2 * bufferLength;
-			auxString = (char*) realloc( finalString, bufferLength * sizeof(char) );
-			finalString = auxString;
-		}
-		finalString[length-1] = character;
-	}
-	
-	// Only for \n purposes.
-	//finalString[length++] = character;
-	finalString[length++] = '\0';
-	
-	auxString = (char*) realloc( finalString, length * sizeof(char) );
-	return auxString;
-	
-}
-
-/*
  * Reads a line from the given filePtr. If the line is empty,
  * returns NULL. If the line is not empty, returns a reference
  * to the string. reference must be freed after.
@@ -159,30 +121,39 @@ char* readFromFile(FILE* filePtr) {
 void reverseFile(FILE* fPtr) {
 	
 	char* reversed = NULL;
+	char* buffer = NULL;
 	char* fileString = readFromFile(fPtr);
+	char* aux = NULL;
 	
 	while( fileString != NULL ) {
 		reversed = reverseString(fileString);
-		printf("%s", reversed);
+		if( buffer == NULL ) {
+			buffer = (char*) malloc( (1 + strlen(reversed)) * sizeof(char) );
+			strcpy(buffer, reversed);
+		} else {
+			aux = (char*) malloc((1 + strlen(reversed) + strlen(buffer)) * sizeof(char));
+			strcat(aux, buffer);
+			strcat(aux, reversed);
+			free(buffer);
+			buffer = aux;
+		}
 		free(fileString);
 		free(reversed);
 		fileString = readFromFile(fPtr);
 	}
+	
+	printf("\n%s", buffer);
+	free(buffer);
+	
 }
 
 int main(int argc, char** argv) {
 	
-	char* stdinString = NULL;
-	char* reversed = NULL;
 	FILE* fPtr = NULL;
 	
 	// Rev from stdin.
 	if( argc == 1 ) {
-		stdinString = readFromStdin();
-		reversed = reverseString(stdinString);
-		printf("%s", stdinString);
-		free(stdinString);
-		free(reversed);
+		reverseFile(stdin);
 		return 0;
 	}
 	
