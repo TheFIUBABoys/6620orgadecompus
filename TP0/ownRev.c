@@ -148,8 +148,8 @@ int main(int argc, char** argv) {
 		// Option was matched.
 		if( checkOption(argv[1]) ) return 0;
 	}
-	
-	for( unsigned i = 1 ; i < argc ; i++ ) {
+	unsigned i;
+	for( i = 1 ; i < argc ; i++ ) {
 		fPtr = fopen(argv[i], "r");
 		reverseFile(fPtr);
 		fclose(fPtr);

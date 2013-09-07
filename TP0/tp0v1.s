@@ -1,113 +1,4 @@
-\documentclass{article}
-\usepackage{latexsym}
-\usepackage[utf8]{inputenx}
-\usepackage[spanish]{babel}
-\usepackage{graphicx}
-\usepackage{anysize}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{float}
-\setlength{\skip\footins}{5cm}
-\usepackage{lscape}
-\usepackage{verbatim}
-\usepackage{moreverb}
-\usepackage{url}
-\usepackage{enumitem}
-\usepackage{multicol}
-\let\verbatiminput=\verbatimtabinput
-\usepackage[nottoc,numbib]{tocbibind}
-\setcounter{tocdepth}{4}
-\setcounter{secnumdepth}{4}
-
-\marginsize{2cm}{2cm}{.5cm}{3cm} 
-
-\begin{document}
-
-\begin{titlepage}
-
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
-
-\center % Center everything on the page
- 
-%----------------------------------------------------------------------------------------
-%	HEADING SECTIONS
-%----------------------------------------------------------------------------------------
-
-\textsc{\LARGE Universidad De Buenos Aires}\\[1.5cm] % Name of your university/college
-\textsc{\Large Facultad De Ingeniería}\\[0.5cm] % Major heading such as course name
-\textsc{\large 66.20 Organización De Computadoras}\\[0.5cm] % Minor heading such as course title
-
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\HRule \\[0.4cm]
-{ \huge \bfseries Trabajo Práctico 0}\\[0.4cm] % Title of your document
-\HRule \\[1.5cm]
- 
-%----------------------------------------------------------------------------------------
-%	AUTHOR SECTION
-%----------------------------------------------------------------------------------------
-
-% If you don't want a supervisor, uncomment the two lines below and remove the section above
-\Large \emph{Integrantes:}\\
-Gonzalo \textsc{Beviglia} - 93144\\ % Your name
-Federico \textsc{Quevedo} - 93159\\ % Your name
-Damián \textsc{Manoff} - 93169\\[5cm] % Your name
-
-%----------------------------------------------------------------------------------------
-%	LOGO SECTION
-%----------------------------------------------------------------------------------------
-
-\includegraphics[scale=0.5]{UBA.jpg}\\[1cm] % Include a department/university logo - this will require the graphicx package
-
-%----------------------------------------------------------------------------------------
-%	DATE SECTION
-%----------------------------------------------------------------------------------------
-
-{\large \text \em {10 de Septiembre de 2013}}\\[3cm] % Date, change the \today to a set date if you want to be precise
- 
-%----------------------------------------------------------------------------------------
-
-\vfill % Fill the rest of the page with whitespace
-
-\end{titlepage}
-
-\section{Performance}
-
-La performance se evaluó invirtiendo el libro ``El Príncipe'' de Nicolás Maquiavelo, y se comparó
-la performance del comando realizado para este trabajo práctico con la del comando unix \emph{rev}.
-El tamaño de dicho texto en formato de texto plano es de 305864 bytes (298KB).
-
-Los tiempos se midieron utilizando el comando Unix \emph{time}.
-
-\subsection{Tiempo \emph{ownRev}}
-
-\begin{verbatim}
-real	0m0.539s
-
-user	0m0.008s
-
-sys	0m0.016s
-\end{verbatim}
-
-
-
-\subsection{Tiempo Unix \emph{rev}}
-
-\begin{verbatim}
-real	0m0.540s
-
-user	0m0.012s
-
-sys	0m0.024s
-\end{verbatim}
-
-\section{C\'odigo Assembly MIPS}
-A continuaci\'on se detallará el c\'odigo assembly para la arquitectura MIPS de nuestro programa en C
-\subsection{C\'odigo assembly}
-\begin{verbatim}
-		.file	1 "tp0v2.c"
+	.file	1 "tp0v1.c"
 	.section .mdebug.abi32
 	.previous
 	.abicalls
@@ -308,6 +199,116 @@ $L27:
 	.end	reverseString
 	.size	reverseString, .-reverseString
 	.align	2
+	.globl	readFromStdin
+	.ent	readFromStdin
+readFromStdin:
+	.frame	$fp,64,$ra		# vars= 24, regs= 3/0, args= 16, extra= 8
+	.mask	0xd0000000,-8
+	.fmask	0x00000000,0
+	.set	noreorder
+	.cpload	$t9
+	.set	reorder
+	subu	$sp,$sp,64
+	.cprestore 16
+	sw	$ra,56($sp)
+	sw	$fp,52($sp)
+	sw	$gp,48($sp)
+	move	$fp,$sp
+	li	$v0,30			# 0x1e
+	sw	$v0,24($fp)
+	lw	$v0,24($fp)
+	addu	$v0,$v0,2
+	move	$a0,$v0
+	la	$t9,malloc
+	jal	$ra,$t9
+	sw	$v0,28($fp)
+	sw	$zero,32($fp)
+	sb	$zero,36($fp)
+	sw	$zero,40($fp)
+$L30:
+	lw	$v0,__sF+4
+	addu	$v0,$v0,-1
+	sw	$v0,__sF+4
+	bgez	$v0,$L33
+	la	$a0,__sF
+	la	$t9,__srget
+	jal	$ra,$t9
+	sb	$v0,44($fp)
+	b	$L34
+$L33:
+	la	$v0,__sF
+	lw	$v1,0($v0)
+	move	$a0,$v1
+	lbu	$a0,0($a0)
+	sb	$a0,44($fp)
+	addu	$v1,$v1,1
+	sw	$v1,0($v0)
+$L34:
+	lbu	$v0,44($fp)
+	sb	$v0,36($fp)
+	sll	$v0,$v0,24
+	sra	$v1,$v0,24
+	li	$v0,10			# 0xa
+	bne	$v1,$v0,$L32
+	b	$L31
+$L32:
+	lw	$v0,40($fp)
+	addu	$v0,$v0,1
+	sw	$v0,40($fp)
+	lw	$v0,40($fp)
+	addu	$v1,$v0,2
+	lw	$v0,24($fp)
+	bne	$v1,$v0,$L35
+	lw	$v0,24($fp)
+	sll	$v0,$v0,1
+	sw	$v0,24($fp)
+	lw	$a0,28($fp)
+	lw	$a1,24($fp)
+	la	$t9,realloc
+	jal	$ra,$t9
+	sw	$v0,32($fp)
+	lw	$v0,32($fp)
+	sw	$v0,28($fp)
+$L35:
+	lw	$v1,28($fp)
+	lw	$v0,40($fp)
+	addu	$v0,$v1,$v0
+	addu	$v1,$v0,-1
+	lbu	$v0,36($fp)
+	sb	$v0,0($v1)
+	b	$L30
+$L31:
+	addu	$a1,$fp,40
+	lw	$v1,0($a1)
+	move	$a0,$v1
+	lw	$v0,28($fp)
+	addu	$a0,$a0,$v0
+	lbu	$v0,36($fp)
+	sb	$v0,0($a0)
+	addu	$v1,$v1,1
+	sw	$v1,0($a1)
+	addu	$a1,$fp,40
+	lw	$v1,0($a1)
+	move	$a0,$v1
+	lw	$v0,28($fp)
+	addu	$v0,$a0,$v0
+	sb	$zero,0($v0)
+	addu	$v1,$v1,1
+	sw	$v1,0($a1)
+	lw	$a0,28($fp)
+	lw	$a1,40($fp)
+	la	$t9,realloc
+	jal	$ra,$t9
+	sw	$v0,32($fp)
+	lw	$v0,32($fp)
+	move	$sp,$fp
+	lw	$ra,56($sp)
+	lw	$fp,52($sp)
+	addu	$sp,$sp,64
+	j	$ra
+	.end	readFromStdin
+	.size	readFromStdin, .-readFromStdin
+	.align	2
 	.globl	readFromFile
 	.ent	readFromFile
 readFromFile:
@@ -335,7 +336,7 @@ readFromFile:
 	sw	$zero,32($fp)
 	sb	$zero,36($fp)
 	sw	$zero,40($fp)
-$L30:
+$L37:
 	lw	$a0,64($fp)
 	la	$t9,fgetc
 	jal	$ra,$t9
@@ -344,16 +345,16 @@ $L30:
 	sll	$v0,$v0,24
 	sra	$v1,$v0,24
 	li	$v0,-1			# 0xffffffffffffffff
-	bne	$v1,$v0,$L32
-	b	$L31
-$L32:
+	bne	$v1,$v0,$L39
+	b	$L38
+$L39:
 	lw	$v0,40($fp)
 	addu	$v0,$v0,1
 	sw	$v0,40($fp)
 	lw	$v0,40($fp)
 	addu	$v1,$v0,1
 	lw	$v0,24($fp)
-	bne	$v1,$v0,$L33
+	bne	$v1,$v0,$L40
 	lw	$v0,24($fp)
 	sll	$v0,$v0,1
 	sw	$v0,24($fp)
@@ -364,7 +365,7 @@ $L32:
 	sw	$v0,32($fp)
 	lw	$v0,32($fp)
 	sw	$v0,28($fp)
-$L33:
+$L40:
 	lw	$v1,28($fp)
 	lw	$v0,40($fp)
 	addu	$v0,$v1,$v0
@@ -373,8 +374,8 @@ $L33:
 	sb	$v0,0($v1)
 	lb	$v1,36($fp)
 	li	$v0,10			# 0xa
-	bne	$v1,$v0,$L30
-$L31:
+	bne	$v1,$v0,$L37
+$L38:
 	addu	$a1,$fp,40
 	lw	$v1,0($a1)
 	move	$a0,$v1
@@ -385,13 +386,13 @@ $L31:
 	sw	$v1,0($a1)
 	lw	$v1,40($fp)
 	li	$v0,1			# 0x1
-	bne	$v1,$v0,$L35
+	bne	$v1,$v0,$L42
 	lw	$a0,28($fp)
 	la	$t9,free
 	jal	$ra,$t9
 	sw	$zero,44($fp)
-	b	$L29
-$L35:
+	b	$L36
+$L42:
 	lw	$a0,28($fp)
 	lw	$a1,40($fp)
 	la	$t9,realloc
@@ -399,7 +400,7 @@ $L35:
 	sw	$v0,32($fp)
 	lw	$v0,32($fp)
 	sw	$v0,44($fp)
-$L29:
+$L36:
 	lw	$v0,44($fp)
 	move	$sp,$fp
 	lw	$ra,56($sp)
@@ -435,11 +436,11 @@ reverseFile:
 	la	$t9,readFromFile
 	jal	$ra,$t9
 	sw	$v0,28($fp)
-$L37:
+$L44:
 	lw	$v0,28($fp)
-	bne	$v0,$zero,$L39
-	b	$L36
-$L39:
+	bne	$v0,$zero,$L46
+	b	$L43
+$L46:
 	lw	$a0,28($fp)
 	la	$t9,reverseString
 	jal	$ra,$t9
@@ -458,8 +459,8 @@ $L39:
 	la	$t9,readFromFile
 	jal	$ra,$t9
 	sw	$v0,28($fp)
-	b	$L37
-$L36:
+	b	$L44
+$L43:
 	move	$sp,$fp
 	lw	$ra,40($sp)
 	lw	$fp,36($sp)
@@ -476,82 +477,95 @@ $LC7:
 	.globl	main
 	.ent	main
 main:
-	.frame	$fp,56,$ra		# vars= 16, regs= 3/0, args= 16, extra= 8
+	.frame	$fp,64,$ra		# vars= 24, regs= 3/0, args= 16, extra= 8
 	.mask	0xd0000000,-8
 	.fmask	0x00000000,0
 	.set	noreorder
 	.cpload	$t9
 	.set	reorder
-	subu	$sp,$sp,56
+	subu	$sp,$sp,64
 	.cprestore 16
-	sw	$ra,48($sp)
-	sw	$fp,44($sp)
-	sw	$gp,40($sp)
+	sw	$ra,56($sp)
+	sw	$fp,52($sp)
+	sw	$gp,48($sp)
 	move	$fp,$sp
-	sw	$a0,56($fp)
-	sw	$a1,60($fp)
+	sw	$a0,64($fp)
+	sw	$a1,68($fp)
 	sw	$zero,24($fp)
-	lw	$v1,56($fp)
-	li	$v0,1			# 0x1
-	bne	$v1,$v0,$L41
-	la	$a0,__sF
-	la	$t9,reverseFile
-	jal	$ra,$t9
+	sw	$zero,28($fp)
 	sw	$zero,32($fp)
-	b	$L40
-$L41:
-	lw	$v1,56($fp)
+	lw	$v1,64($fp)
+	li	$v0,1			# 0x1
+	bne	$v1,$v0,$L48
+	la	$t9,readFromStdin
+	jal	$ra,$t9
+	sw	$v0,24($fp)
+	lw	$a0,24($fp)
+	la	$t9,reverseString
+	jal	$ra,$t9
+	sw	$v0,28($fp)
+	la	$a0,$LC6
+	lw	$a1,24($fp)
+	la	$t9,printf
+	jal	$ra,$t9
+	lw	$a0,24($fp)
+	la	$t9,free
+	jal	$ra,$t9
+	lw	$a0,28($fp)
+	la	$t9,free
+	jal	$ra,$t9
+	sw	$zero,40($fp)
+	b	$L47
+$L48:
+	lw	$v1,64($fp)
 	li	$v0,2			# 0x2
-	bne	$v1,$v0,$L42
-	lw	$v0,60($fp)
+	bne	$v1,$v0,$L49
+	lw	$v0,68($fp)
 	addu	$v0,$v0,4
 	lw	$a0,0($v0)
 	la	$t9,checkOption
 	jal	$ra,$t9
-	beq	$v0,$zero,$L42
-	sw	$zero,32($fp)
-	b	$L40
-$L42:
+	beq	$v0,$zero,$L49
+	sw	$zero,40($fp)
+	b	$L47
+$L49:
 	li	$v0,1			# 0x1
-	sw	$v0,28($fp)
-$L44:
-	lw	$v0,28($fp)
-	lw	$v1,56($fp)
+	sw	$v0,36($fp)
+$L51:
+	lw	$v0,36($fp)
+	lw	$v1,64($fp)
 	sltu	$v0,$v0,$v1
-	bne	$v0,$zero,$L47
-	b	$L45
-$L47:
-	lw	$v0,28($fp)
+	bne	$v0,$zero,$L54
+	b	$L52
+$L54:
+	lw	$v0,36($fp)
 	sll	$v1,$v0,2
-	lw	$v0,60($fp)
+	lw	$v0,68($fp)
 	addu	$v0,$v1,$v0
 	lw	$a0,0($v0)
 	la	$a1,$LC7
 	la	$t9,fopen
 	jal	$ra,$t9
-	sw	$v0,24($fp)
-	lw	$a0,24($fp)
+	sw	$v0,32($fp)
+	lw	$a0,32($fp)
 	la	$t9,reverseFile
 	jal	$ra,$t9
-	lw	$a0,24($fp)
+	lw	$a0,32($fp)
 	la	$t9,fclose
 	jal	$ra,$t9
-	lw	$v0,28($fp)
+	lw	$v0,36($fp)
 	addu	$v0,$v0,1
-	sw	$v0,28($fp)
-	b	$L44
-$L45:
-	sw	$zero,32($fp)
-$L40:
-	lw	$v0,32($fp)
+	sw	$v0,36($fp)
+	b	$L51
+$L52:
+	sw	$zero,40($fp)
+$L47:
+	lw	$v0,40($fp)
 	move	$sp,$fp
-	lw	$ra,48($sp)
-	lw	$fp,44($sp)
-	addu	$sp,$sp,56
+	lw	$ra,56($sp)
+	lw	$fp,52($sp)
+	addu	$sp,$sp,64
 	j	$ra
 	.end	main
 	.size	main, .-main
 	.ident	"GCC: (GNU) 3.3.3 (NetBSD nb3 20040520)"
-
-\end{verbatim}
-\end{document}
