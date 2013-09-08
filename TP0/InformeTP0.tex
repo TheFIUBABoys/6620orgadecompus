@@ -73,6 +73,10 @@ Damián \textsc{Manoff} - 93169\\[5cm] % Your name
 
 \end{titlepage}
 
+\section{Diseño e implementación}
+
+Uno de los principales limitantes de las soluciones que pudimos implementar era el largo del archivo a invertir, ya que este podia llegar a ocupar mucho lugar en la memoria. Buscamos mejorar esta situación leyendo e invirtiendo de a un archivo por vez, para evitar tener mas de uno en memoria. También evitamos tener que declarar otro espacio de memoria del mismo tamaño del archivo original, donde iria la cadena invertida, haciendo una inversion in situ de la cadena, es decir, sobre la misma memoria reservada a donde se cargo el archivo. Esto ademas de ahorrarnos duplicar la memoria usada nos ahorra el tiempo de reservar la misma. Sobre la cadena original se realizan swaps espejados hasta llegar a la cadena invertida.
+
 \section{Performance}
 
 La performance se evaluó invirtiendo el libro ``El Príncipe'' de Nicolás Maquiavelo, y se comparó
@@ -102,6 +106,87 @@ user	0m0.012s
 
 sys	0m0.024s
 \end{verbatim}
+
+\section{Compilación del programa}
+
+Para el compilado del programa hicimos el siguiente makefile:
+
+\begin{verbatim}
+CFLAGS=-Wall -pedantic -std=c99 -g
+MEMFLAGS=valgrind --leak-check=full --track-origins=yes -v
+CC=gcc
+INPUT=ownRev.c
+MIDDLEFILE=ownRev.o
+EXEC=ownRev
+TESTSCRIPT=TestFiles/tests.sh
+
+all: $(EXEC) clean
+
+.SILENT:
+$(MIDDLEFILE):
+	$(CC) $(CFLAGS) $(INPUT) -c
+
+.SILENT:
+$(EXEC): $(MIDDLEFILE)
+	$(CC) $(CFLAGS) $(MIDDLEFILE) -o $(EXEC)
+
+.SILENT:	
+run:
+	./$(EXEC)
+
+.SILENT:
+runTests:
+	./$(TESTSCRIPT)
+
+.SILENT:
+memCheck:
+	$(MEMFLAGS) ./$(EXEC) TestFiles/test TestFiles/test1 TestFiles/test2
+
+.SILENT:
+clean:
+	rm *.o
+
+.SILENT:
+cleanExec:
+	rm $(EXEC)
+
+\end{verbatim}
+
+La ejecución normal de este make file produce el archivo ejecutable y ademas elimina los intermediarios.
+
+Se puede tambien llamar pasando como parametro el nombre del archivo intermediario para generarlo, o el nombre del ejecutable, que realizara lo mismo que la ejecución por defecto pero sin eliminar el intermediario.
+
+Para corroborar que no se estuviera perdiendo memoria tambien incluimos el parametro \(memCheck\) que corre el programa con valgrind informando si hubo o no alguna perdida.
+
+Desde el mismo makefile tambien incluimos la posibilidad de correr las pruebas, y por ultimo, la de eliminar los archivos generados, tanto intermediarios como programa final.
+
+\section{Pruebas}
+
+Para las pruebas hicimos el siguiente script de bash:
+
+\begin{verbatim}
+#!/bin/bash
+FILES="TestFiles/test
+TestFiles/test1
+TestFiles/test2"
+
+for f in $FILES
+do
+   ./ownRev $f > auxRev
+   ./ownRev auxRev > doubleRev
+   DIFF=$(diff $f doubleRev)
+   if [ "$DIFF" != "" ] 
+   then
+      echo "[ERROR] $f was not reversed correctly"
+   else
+      echo "[OK] $f was reversed correctly"
+   fi
+   rm auxRev
+   rm doubleRev
+done
+\end{verbatim}
+
+Se toman lineas de un archivo, en este caso llamado test, y se las invierte dos veces. Si la inversion se realizo correctamente no deberia haber diferencias entre el texto introducido y el resultante.
 
 \section{C\'odigo Assembly MIPS}
 A continuaci\'on se detallará el c\'odigo assembly para la arquitectura MIPS de nuestro programa en C

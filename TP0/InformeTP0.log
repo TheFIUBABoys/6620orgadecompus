@@ -1,15 +1,21 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.8.30)  7 SEP 2013 14:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.9.8)  8 SEP 2013 17:38
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
 **InformeTP0.tex
-(./InformeTP0.tex
+(C:\Users\Fede\Documents\GitHub\6620orgadecompus\TP0\InformeTP0.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
-aded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2012-05-30, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2012-05-30, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -24,35 +30,35 @@ File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty"
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/inputenx.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\inputenx.sty"
 Package: inputenx 2011/05/27 v1.10 Enhanced input encoding handling (HO)
 
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/ix-alias.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\ix-alias.def"
 File: ix-alias.def 2011/05/27 v1.10 Alias list (inputenx)
 )
 Package inputenx Info: Encoding name: utf8
 (inputenx)             Encoding file: utf8.def
 (inputenx)              on input line 171.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -202,7 +208,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -233,7 +239,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -257,55 +263,56 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/spanish.ldf
-Language: spanish.ldf 2011/10/06 v5.0k Spanish support from the babel system
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\spanish.ldf"
+Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
 )
-
-Package babel Warning: No hyphenation patterns were loaded for
-(babel)                the language `Spanish'
-(babel)                I will use the patterns loaded for \language=0 instead.
-
-\l@spanish = a dialect from \language0
 \es@datefmt=\count88
 \es@quottoks=\toks16
 \es@quotdepth=\count89
-Package babel Info: Making " an active character on input line 496.
-Package babel Info: Making . an active character on input line 599.
-Package babel Info: Making < an active character on input line 644.
-Package babel Info: Making > an active character on input line 644.
-)) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package babel Info: Making " an active character on input line 492.
+Package babel Info: Making . an active character on input line 585.
+Package babel Info: Making < an active character on input line 630.
+Package babel Info: Making > an active character on input line 630.
+))
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks17
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count90
@@ -313,51 +320,49 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(/usr/share/texlive/texmf-dist/tex/latex/anysize/anysize.sty
-Package: anysize 1994/08/13 setting margin sizes
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\anysize.sty"
+Package: anysize 1994/08/13 1.0 Contributed LaTeX2e package
 
-document style option `anysize' loaded
-Michael Salzenberg, Thomas Esser, Dirk Hillbrecht
-Version 1.0, Aug 13, 1994
+Package: `anysize' 1.0 <1994/08/13>
 \@Leftmargin=\dimen106
 \@Rightmargin=\dimen107
 \@Topmargin=\dimen108
 \@Bottommargin=\dimen109
-) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2000/07/18 v2.13 AMS math features
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks18
 \ex@=\dimen110
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen111
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count91
-LaTeX Info: Redefining \frac on input line 211.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count92
 \leftroot@=\count93
-LaTeX Info: Redefining \overline on input line 307.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count94
 \DOTSCASE@=\count95
-LaTeX Info: Redefining \ldots on input line 379.
-LaTeX Info: Redefining \dots on input line 382.
-LaTeX Info: Redefining \cdots on input line 467.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen112
-LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count96
 \c@MaxMatrixCols=\count97
 \dotsspace@=\muskip10
@@ -378,20 +383,20 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks22
-LaTeX Info: Redefining \[ on input line 2666.
-LaTeX Info: Redefining \] on input line 2667.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2009/06/22 v3.00
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup5
 \symAMSb=\mathgroup6
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count103
 \float@exts=\toks23
@@ -399,26 +404,26 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks24
 \@floatcapt=\box29
 )
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks25
 \verbatim@line=\toks26
 \verbatim@in@stream=\read1
 )
-(/usr/share/texlive/texmf-dist/tex/latex/moreverb/moreverb.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\moreverb\moreverb.sty"
 Package: moreverb 2008/06/03 v2.3a `more' verbatim facilities
 \tab@position=\count104
 \tab@size=\count105
 \listing@line=\count106
 )
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip46
 \enit@outerparindent=\dimen119
@@ -426,7 +431,7 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box30
 \enitdp@description=\count107
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
 Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \c@tracingmulticols=\count108
 \mult@box=\box31
@@ -474,19 +479,14 @@ Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
 \colbreak@box=\box56
 \multicol@sort@counter=\count116
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\tocbibind\tocbibind.sty"
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has section divisions on input line 50.
 
 
 Package tocbibind Note: Using section or other style headings.
 
-) (./InformeTP0.aux
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
-)
-\openout1 = `InformeTP0.aux'.
-
+) (C:\Users\Fede\Documents\GitHub\6620orgadecompus\TP0\InformeTP0.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -499,10 +499,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
-LaTeX Info: Redefining \. on input line 24.
-LaTeX Info: Redefining \% on input line 24.
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
 \scratchdimen=\dimen128
@@ -515,87 +513,51 @@ LaTeX Info: Redefining \% on input line 24.
 \MPnumerator=\count121
 \makeMPintoPDFobject=\count122
 \everyMPtoPDFconversion=\toks29
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-<UBA.jpg, id=1, 233.4321pt x 233.9139pt>
+) <UBA.jpg, id=1, 233.4321pt x 233.9139pt>
 File: UBA.jpg Graphic file (type jpg)
  <use UBA.jpg>
 Package pdftex.def Info: UBA.jpg used on input line 62.
 (pdftex.def)             Requested size: 116.71576pt x 116.95665pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./UBA.jpg>] [1] [2] [3] [4
-] [5] [6] [7] [8]
-[9] (./InformeTP0.aux
-LaTeX Info: Redefining \. on input line 6.
-LaTeX Info: Redefining \% on input line 6.
-) ) 
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Fede/Documents/G
+itHub/6620orgadecompus/TP0/UBA.jpg>] [1]
+LaTeX Font Info:    Try loading font information for U+lasy on input line 159.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 159.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 159.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [2] [3] [4] [5]
+[6] [7] [8] [9] [10] [11]
+(C:\Users\Fede\Documents\GitHub\6620orgadecompus\TP0\InformeTP0.aux) ) 
 Here is how much of TeX's memory you used:
- 3886 strings out of 495059
- 51382 string characters out of 3182030
- 116989 words of memory out of 3000000
- 6991 multiletter control sequences out of 15000+200000
- 8227 words of font info for 29 fonts, out of 3000000 for 9000
- 14 hyphenation exceptions out of 8191
- 38i,5n,27p,242b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmtt10.pfb>
-Output written on InformeTP0.pdf (10 pages, 727076 bytes).
+ 3574 strings out of 493921
+ 45993 string characters out of 3147286
+ 109622 words of memory out of 3000000
+ 6800 multiletter control sequences out of 15000+200000
+ 10244 words of font info for 40 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,5n,27p,754b,248s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on InformeTP0.pdf (12 pages, 751822 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 78 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
