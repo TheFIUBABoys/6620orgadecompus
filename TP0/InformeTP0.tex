@@ -195,21 +195,23 @@ TestFiles/test2"
 
 for f in $FILES
 do
-   ./ownRev $f > auxRev
-   ./ownRev auxRev > doubleRev
-   DIFF=$(diff $f doubleRev)
-   if [ "$DIFF" != "" ] 
-   then
-      echo "[ERROR] $f was not reversed correctly"
-   else
-      echo "[OK] $f was reversed correctly"
-   fi
-   rm auxRev
-   rm doubleRev
+	./ownRev $f > auxRev
+	echo $f > auxOriginal
+	rev auxOriginal > auxCompRev
+	DIFF=$(diff $f auxCompRev)
+	if [ "$DIFF" != "" ] 
+	then
+		echo "[ERROR] $f was not reversed correctly"
+	else
+		echo "[OK] $f was reversed correctly"
+	fi
+	rm auxRev
+	rm auxOriginal
+	rm auxCompRev
 done
 \end{verbatim}
 
-Se toman lineas de un archivo, en este caso llamado test, y se las invierte dos veces. Si la inversion se realizo correctamente no deberia haber diferencias entre el texto introducido y el resultante.
+Se toman lineas de un archivo, en este caso llamado test, y se las invierte usando tanto nuestro programa como el comando \( rev \) de linux, si los resultados son iguales la prueba es valida.
 
 \section{C\'odigo Assembly MIPS}
 A continuaci\'on se detallará el c\'odigo assembly para la arquitectura MIPS de nuestro programa en C

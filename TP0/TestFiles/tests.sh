@@ -6,8 +6,9 @@ TestFiles/test2"
 for f in $FILES
 do
 	./ownRev $f > auxRev
-	./ownRev auxRev > doubleRev
-	DIFF=$(diff $f doubleRev)
+	echo $f > auxOriginal
+	rev auxOriginal > auxCompRev
+	DIFF=$(diff $f auxCompRev)
 	if [ "$DIFF" != "" ] 
 	then
 		echo "[ERROR] $f was not reversed correctly"
@@ -15,6 +16,6 @@ do
 		echo "[OK] $f was reversed correctly"
 	fi
 	rm auxRev
-	rm doubleRev
+	rm auxOriginal
+	rm auxCompRev
 done
-
