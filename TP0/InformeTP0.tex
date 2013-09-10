@@ -73,6 +73,10 @@ Damián \textsc{Manoff} - 93169\\[5cm] % Your name
 
 \end{titlepage}
 
+	\tableofcontents
+		
+\newpage
+
 \section{Diseño e implementación}
 
 Uno de los principales limitantes de las soluciones que pudimos implementar era el largo del archivo a invertir, ya que este podia llegar a ocupar mucho lugar en la memoria. Buscamos mejorar esta situación leyendo e invirtiendo de a un archivo por vez, para evitar tener mas de uno en memoria. También evitamos tener que declarar otro espacio de memoria del mismo tamaño del archivo original, donde iria la cadena invertida, haciendo una inversion in situ de la cadena, es decir, sobre la misma memoria reservada a donde se cargo el archivo. Esto ademas de ahorrarnos duplicar la memoria usada nos ahorra el tiempo de reservar la misma. Sobre la cadena original se realizan swaps espejados hasta llegar a la cadena invertida.
@@ -106,6 +110,25 @@ user	0m0.012s
 
 sys	0m0.024s
 \end{verbatim}
+
+\subsection{Comparación grafica}
+
+Los textos utilizados para esta comparación fueron: 
+\begin{itemize}
+\item The Divine Comedy - Dante Alighieri (627KB)
+\item Adventures of Huckleberry Finn - Mark Twain (596KB)
+\item Les Miserables - Victor Hugo (3.2MB)
+\item Metamorphosis - Franz Kafka (139KB)
+\item The Prince - Nicolo Machiavelli (299KB)
+\end{itemize}
+
+\begin{figure}[h!]
+  \caption{Comparacion entre rev de Unix y nuestro ``ownRev''}
+  \centering
+    \includegraphics[width=0.5\textwidth]{TestFiles/times.png}
+\end{figure}
+
+\newpage
 
 \section{Compilación del programa}
 
