@@ -55,18 +55,20 @@ void swapChars(char* string, int pos1, int pos2) {
  * source: The string to reverse.
  */
 char* reverseString(charWrap* source) {
-	int length = source -> length;
+	unsigned len = source -> length;
 	
 	// One more character for \0 terminator.
-	char* reversed = (char*) malloc( (length + 1) * sizeof(char) );
-	strncpy(reversed, source -> string, length);
+	char* reversed = (char*) malloc( (len + 1) * sizeof(char) );
+	strncpy(reversed, source -> string, len);
 	
 	int posInitial = 0;
 	// Start counting from 0, so length - 1. One less for \n.
-	int posFinal = length - 2;
+	int posFinal = len - 2;
 	
 	while( posInitial < posFinal )
 		swapChars(reversed, posInitial++, posFinal--);
+
+	reversed[len] = '\0';
 		
 	return reversed;
 }
