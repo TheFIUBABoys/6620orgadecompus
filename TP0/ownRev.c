@@ -87,7 +87,7 @@ char* readFromFile(FILE* filePtr) {
 	
 	// Initialize aux variables.
 	char* auxString = NULL;
-	char character = 0;
+	int character = 0;
 	int length = 0;
 	
 	// Parse stdin until we get \n (should be EOF).
@@ -169,6 +169,7 @@ int main(int argc, char** argv) {
 	unsigned i;
 	for( i = 1 ; i < argc ; i++ ) {
 		fPtr = fopen(argv[i], "r");
+		// Handling opening file error.
 		if( fPtr == NULL ) fprintf(stderr, "Error: unable to open file %s\n", argv[i]);
 		else {
 			reverseFile(fPtr);

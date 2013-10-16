@@ -18,21 +18,21 @@ $(EXEC): $(MIDDLEFILE)
 	$(CC) $(CFLAGS) $(MIDDLEFILE) -o $(EXEC)
 
 .SILENT:	
-run:
+run: $(EXEC)
 	./$(EXEC)
 
 .SILENT:
-runTests:
+runTests: $(EXEC)
 	./$(TESTSCRIPT)
 
 .SILENT:
-memCheck:
+memCheck: $(EXEC)
 	$(MEMFLAGS) ./$(EXEC) TestFiles/test TestFiles/test1 TestFiles/test2
 
 .SILENT:
-clean:
+clean: $(MIDDLEFILE)
 	rm *.o
 
 .SILENT:
-cleanExec:
+cleanExec: $(EXEC)
 	rm $(EXEC)
