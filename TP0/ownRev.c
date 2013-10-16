@@ -86,7 +86,7 @@ charWrap* readFromFile(FILE* filePtr) {
 	char* finalString = (char*) malloc( (bufferLength + 2) * sizeof(char) );
 	// Memory alloc error handling.
 	if( finalString == NULL ) {
-		fprintf(stderr, "Error: unable to allocate %d bytes on line 81\n", (bufferLength + 2) * sizeof(char) );
+		fprintf(stderr, "Error: unable to allocate %d bytes on line 86\n", (bufferLength + 2) * sizeof(char) );
 		return NULL;
 	}
 	
@@ -105,7 +105,7 @@ charWrap* readFromFile(FILE* filePtr) {
 			auxString = (char*) realloc( finalString, bufferLength * sizeof(char) );
 			// Memory alloc error handling.
 			if( auxString == NULL ) {
-				fprintf(stderr, "Error: unable to allocate %d bytes on line 100\n", bufferLength * sizeof(char) );
+				fprintf(stderr, "Error: unable to allocate %d bytes on line 105\n", bufferLength * sizeof(char) );
 				free(finalString);
 				return NULL;
 			}
@@ -124,12 +124,12 @@ charWrap* readFromFile(FILE* filePtr) {
 	auxString = (char*) realloc( finalString, length * sizeof(char) );
 	// Memory alloc error handling.
 	if( auxString == NULL ) {
-		fprintf(stderr, "Error: unable to allocate %d bytes on line 122", bufferLength * sizeof(char) );
+		fprintf(stderr, "Error: unable to allocate %d bytes on line 124", bufferLength * sizeof(char) );
 		return NULL;
 	}
 	charWrap* retVal = (charWrap*) malloc( sizeof(charWrap) );
 	if( retVal == NULL ) {
-		fprintf(stderr, "Error: unable to allocate %d bytes on line 122", bufferLength * sizeof(char) );
+		fprintf(stderr, "Error: unable to allocate %d bytes on line 130", sizeof(charWrap) );
 		return NULL;
 	}
 	retVal -> string = auxString;
