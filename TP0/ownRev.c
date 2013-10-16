@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef struct charWrap {
+	char* string;
+	unsigned length;
+} charWrap;
+
 /*
  * Checks the option passed via attribute. Prints a different output
  * depending on the option that was passed. Handles only one option
@@ -49,12 +54,12 @@ void swapChars(char* string, int pos1, int pos2) {
  * 
  * source: The string to reverse.
  */
-char* reverseString(char* source) {
-	int length = strlen(source);
+char* reverseString(charWrap* source) {
+	int length = source -> length;
 	
 	// One more character for \0 terminator.
 	char* reversed = (char*) malloc( (length + 1) * sizeof(char) );
-	strcpy(reversed, source);
+	strncpy(reversed, source -> string, length);
 	
 	int posInitial = 0;
 	// Start counting from 0, so length - 1. One less for \n.
@@ -73,7 +78,7 @@ char* reverseString(char* source) {
  * 
  * filePtr: filePtr to be read.
  */
-char* readFromFile(FILE* filePtr) {
+charWrap* readFromFile(FILE* filePtr) {
 	
 	// Initial buffer length.
 	unsigned bufferLength = 30;
@@ -111,10 +116,7 @@ char* readFromFile(FILE* filePtr) {
 		character = fgetc(filePtr);
 	}
 	
-	// Only for \n purposes.
-	finalString[length++] = '\0';
-	
-	if( length == 1 ) {
+	if( length == 0 ) {
 		free(finalString);
 		return NULL;
 	}
@@ -125,8 +127,14 @@ char* readFromFile(FILE* filePtr) {
 		fprintf(stderr, "Error: unable to allocate %d bytes on line 122", bufferLength * sizeof(char) );
 		return NULL;
 	}
-	return auxString;
-	
+	charWrap* retVal = (charWrap*) malloc( sizeof(charWrap) );
+	if( retVal == NULL ) {
+		fprintf(stderr, "Error: unable to allocate %d bytes on line 122", bufferLength * sizeof(char) );
+		return NULL;
+	}
+	retVal -> string = auxString;
+	retVal -> length = length;
+	return retVal;
 }
 
 /*
@@ -139,11 +147,12 @@ char* readFromFile(FILE* filePtr) {
 void reverseFile(FILE* fPtr) {
 	
 	char* reversed = NULL;
-	char* fileString = readFromFile(fPtr);
+	charWrap* fileString = readFromFile(fPtr);
 	
 	while( fileString != NULL ) {
 		reversed = reverseString(fileString);
 		printf("%s", reversed);
+		free(fileString -> string);
 		free(fileString);
 		free(reversed);
 		fileString = readFromFile(fPtr);
@@ -176,6 +185,5 @@ int main(int argc, char** argv) {
 			fclose(fPtr);
 		}
 	}
-	
 	return 0;
 }
