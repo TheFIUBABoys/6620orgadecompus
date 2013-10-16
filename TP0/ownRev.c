@@ -79,6 +79,11 @@ char* readFromFile(FILE* filePtr) {
 	unsigned bufferLength = 30;
 	// Allocate memory for buffer length and \0 terminator.
 	char* finalString = (char*) malloc( (bufferLength + 2) * sizeof(char) );
+	// Memory alloc error handling.
+	if( finalString == NULL ) {
+		fprintf(stderr, "Error: unable to allocate %d bytes on line 81\n", (bufferLength + 2) * sizeof(char) );
+		return NULL;
+	}
 	
 	// Initialize aux variables.
 	char* auxString = NULL;
@@ -86,16 +91,24 @@ char* readFromFile(FILE* filePtr) {
 	int length = 0;
 	
 	// Parse stdin until we get \n (should be EOF).
-	while( (character = fgetc(filePtr)) != EOF ) {	
+	character = fgetc(filePtr);
+	while( !feof(filePtr) ) {	
 		length++;
 		// Buffer has been filled. Allocate more memory.
 		if( (length + 1) == bufferLength ) {
 			bufferLength =  2 * bufferLength;
 			auxString = (char*) realloc( finalString, bufferLength * sizeof(char) );
+			// Memory alloc error handling.
+			if( auxString == NULL ) {
+				fprintf(stderr, "Error: unable to allocate %d bytes on line 100\n", bufferLength * sizeof(char) );
+				free(finalString);
+				return NULL;
+			}
 			finalString = auxString;
 		}
 		finalString[length-1] = character;
 		if( character == '\n' ) break;
+		character = fgetc(filePtr);
 	}
 	
 	// Only for \n purposes.
@@ -107,6 +120,11 @@ char* readFromFile(FILE* filePtr) {
 	}
 	
 	auxString = (char*) realloc( finalString, length * sizeof(char) );
+	// Memory alloc error handling.
+	if( auxString == NULL ) {
+		fprintf(stderr, "Error: unable to allocate %d bytes on line 122", bufferLength * sizeof(char) );
+		return NULL;
+	}
 	return auxString;
 	
 }
@@ -151,8 +169,11 @@ int main(int argc, char** argv) {
 	unsigned i;
 	for( i = 1 ; i < argc ; i++ ) {
 		fPtr = fopen(argv[i], "r");
-		reverseFile(fPtr);
-		fclose(fPtr);
+		if( fPtr == NULL ) fprintf(stderr, "Error: unable to open file %s\n", argv[i]);
+		else {
+			reverseFile(fPtr);
+			fclose(fPtr);
+		}
 	}
 	
 	return 0;

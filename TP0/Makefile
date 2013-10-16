@@ -7,6 +7,7 @@ EXEC=ownRev
 TESTSCRIPT=TestFiles/tests.sh
 
 all: $(EXEC) clean
+test: all runTests cleanExec
 
 .SILENT:
 $(MIDDLEFILE):
