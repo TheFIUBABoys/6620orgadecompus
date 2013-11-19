@@ -1,0 +1,155 @@
+\documentclass{article}
+\usepackage{latexsym}
+\usepackage[utf8]{inputenx}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\setlength{\skip\footins}{5cm}
+\usepackage{lscape}
+\usepackage{verbatim}
+\usepackage{moreverb}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{multicol}
+\let\verbatiminput=\verbatimtabinput
+\usepackage[nottoc,numbib]{tocbibind}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\usepackage{listings}
+
+\marginsize{2cm}{2cm}{.5cm}{3cm} 
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Universidad De Buenos Aires}\\[1.5cm] % Name of your university/college
+\textsc{\Large Facultad De Ingeniería}\\[0.5cm] % Major heading such as course name
+\textsc{\large 66.20 Organización De Computadoras}\\[0.5cm] % Minor heading such as course title
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Trabajo Práctico 1}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+ 
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+% If you don't want a supervisor, uncomment the two lines below and remove the section above
+\Large \emph{Integrantes:}\\
+Gonzalo \textsc{Beviglia} - 93144\\ % Your name
+Federico \textsc{Quevedo} - 93159\\ % Your name
+Damián \textsc{Manoff} - 93169\\[5cm] % Your name
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\includegraphics[scale=0.5]{UBA.jpg}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \text \em {\today}}\\[3cm] % Date, change the \today to a set date if you want to be precise
+ 
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+	\tableofcontents
+		
+\newpage
+
+\section{Diseño e implementación}
+
+Concluida la primer parte del trabajo, se pide implementar puramente en MIPS assembly el mismo programa que ya se obten\'ia automaticamente, con el m\'inimo cambio que hace interesante la partida, mezclar c\'odigo C con assembly.\\
+Para esto se deber\'a respetar la ABI propuesta por la c\'atedra y vista en clases, adem\'as de algunas pautas pedidas:
+\begin{itemize}
+	\item Los archivos ser\'an abiertos en C, pero manejados mediante syscall desde assembly.
+	\item La funcion \textit{reverse(int fd, int outfd)} ser\'a puramente implementada en assembly con c\'odigo propio.
+	\item Las llamadas a reserva de memoria se har\'an con funciones prove\'idas por la c\'atedra.
+\end{itemize}
+
+\section{Performance}
+
+En esta parte se evaluar\'a la performance de lo implementado con respecto al tp0 anteriormente entregado. Para ello se invertir\'a el libro ``El Príncipe'' de Nicolás Maquiavelo.
+El tamaño de dicho texto en formato de texto plano es de 305864 bytes (298KB).
+
+Los tiempos se midieron utilizando el comando Unix \emph{time}.
+
+\subsection{Tiempo \emph{reverse TP0}}
+
+\begin{verbatim}
+real	0m0.539s
+
+user	0m0.008s
+
+sys	0m0.016s
+\end{verbatim}
+
+
+
+\subsection{Tiempo \emph{reverse TP1}}
+
+\begin{verbatim}
+real	0m0.740s
+
+user	0m0.032s
+
+sys	0m0.054s
+\end{verbatim}
+
+\newpage
+
+\section{Compilación del programa}
+
+Para el compilado del programa hicimos el siguiente makefile:
+
+\lstinputlisting{../src/MIPS/Makefile}
+
+La ejecución normal de este make file produce el archivo ejecutable y ademas elimina los intermediarios.
+
+Se puede tambien llamar pasando como parametro el nombre del archivo intermediario para generarlo, o el nombre del ejecutable, que realizara lo mismo que la ejecución por defecto pero sin eliminar el intermediario.
+
+Para corroborar que no se estuviera perdiendo memoria tambien incluimos el parametro \(memCheck\) que corre el programa con valgrind informando si hubo o no alguna perdida.
+
+Desde el mismo makefile tambien incluimos la posibilidad de correr las pruebas, y por ultimo, la de eliminar los archivos generados, tanto intermediarios como programa final.
+
+\section{C\'odigo Fuente}
+
+\subsection{C\'odigo fuente C}
+
+\lstinputlisting[language=C]{../src/MIPS/main.c}
+\lstinputlisting[language=C]{../src/MIPS/reverse.c}
+\lstinputlisting[language=C]{../src/MIPS/reverse.h}
+
+\subsection{C\'odigo assembly MIPS}
+
+A continuaci\'on se detallará el c\'odigo assembly para la arquitectura MIPS de las funciones implementadas para dar vuelta las l\'ineas.
+
+\lstinputlisting{../src/MIPS/reverse.S}
+
+\section{Conclusiones}
+
+En primer lugar llam\'o la atenci\'on que el tiempo del programa puramente en assembler sea mayor que la implementaci\'on en C. Pero luego se pudo llegar a la conclusi\'on que el tiempo ganado son las optimizaciones del compilador \textit{gcc}, adem\'as de alguna falta producida mezclando assembler de dos lugares distintos (\textit{reverse.S} y \textit{mymalloc.S})\\
+Otro aspecto a observar es la fragilidad con la que assembler permite trabajar. Es decir, cualquier sentencia mal escrita llevaba al trabajo a terminar como un \textit{segmentation fault}, pero como ventaja se entend\'ia claramente porque se llegaba a ese error, cosa que en C no sucede ya que no se puede ver que es lo que realmente hacen las funciones utilizadas frecuentemente, tales como los \textit{printf},\textit{fopen},\textit{getc}, etc. 
+
+\end{document}
