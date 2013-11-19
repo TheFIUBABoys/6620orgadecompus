@@ -28,8 +28,8 @@ memCheck: $(EXEC)
 
 .SILENT:
 clean: $(MIDDLEFILE)
-	rm *.o
+	rm -f *.o
 
 .SILENT:
 cleanExec: $(EXEC)
-	rm $(EXEC)
+	rm -f $(EXEC)
