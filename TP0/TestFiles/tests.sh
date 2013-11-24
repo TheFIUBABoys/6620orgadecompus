@@ -17,3 +17,16 @@ do
 	rm auxRev
 	rm auxCompRev
 done
+
+BIN_FILE="TestFiles/testbin"
+./ownRev $BIN_FILE > auxRev
+./ownRev auxRev > auxDoubleRev
+DIFF=$(diff auxDoubleRev $BIN_FILE)
+if [ "$DIFF" != "" ]
+then
+	echo "[ERROR] $BIN_FILE was not reversed correctly"
+else
+	echo "[OK] $BIN_FILE was reversed correctly"
+fi
+rm auxRev
+rm auxDoubleRev
