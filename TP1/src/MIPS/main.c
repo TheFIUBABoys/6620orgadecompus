@@ -11,8 +11,8 @@ int main(int argc, char** argv) {
 	FILE* outFd = fopen("salida.out","w");
 	// Rev from stdin.
 	if( argc == 1 ) {
-		reverse(STDIN_FILENO, fileno( outFd ));
-		//reverse(STDIN_FILENO, 1);
+		//reverse(STDIN_FILENO, fileno( outFd ));
+		reverse(STDIN_FILENO, 1);
 		fclose(outFd);
 		return 0;
 	}

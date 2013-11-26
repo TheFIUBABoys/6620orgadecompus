@@ -43,8 +43,7 @@ readFile:
 	bltz v0, read_error
 	
 fileLoop:
-	lb t0, 0(s6)		# Load character value
-	beqz t0, endFile	# eof validation
+	beqz v0, endFile	# eof validation
 	
 	addiu s5, s5, 1		# Add 1 to lenght
 	addiu t0, s5, 1		# t0 <- length + 1
@@ -66,7 +65,7 @@ continueLoop:
 	move a1, s6			# s6 <- character
 	li a2, 1			# read 1 byte
 	syscall				# read file
-	bltz v0, read_error
+	bltz v0, read_error # read error comprobation
 	
 	b fileLoop
 	
@@ -99,11 +98,13 @@ endIncrease:
 	
 	
 endFile:
+	beqz	s5, end		# No data readed
+
 	move	s7, s5		# s7 <- fileLength
-	subu	s7, s7, 2	# fileLength = fileLength - 2
+	subu	s7, s7, 1	# fileLength = fileLength - 1
 	
 reverseLoop:
-	addu	t0, s7, s4	# t2 <- buffer element index
+	addu	t0, s7, s4		# t2 <- buffer element index
 
 	li		v0, SYS_write	# system call for write to file
 	move	a0, s1			# file descriptor
@@ -112,7 +113,7 @@ reverseLoop:
 	syscall					# write to file
 	bltz v0, write_error
 	
-	beqz	s7, end		# end reverting string
+	beqz	s7, readFile	# end reverting string
 
 	subu	s7, s7, 1	# buffer index - 1
 	
