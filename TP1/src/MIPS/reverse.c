@@ -1,5 +1,5 @@
 #include "reverse.h"
-
+#include <stdio.h>
 /*
  * Prints the output of the given file after its lines were
  * reversed. File pointer must be already opened for reading
@@ -7,11 +7,15 @@
  * 
  * fPtr: file to be reversed.
  */
-int reverse(int infd, int outfd)
+int reverseS(int infd, int outfd)
 {
-	int result = reverseS(infd,outfd);
+	int result=0;
+	int result = reverse(infd,outfd);
+	const char* msj = reverse_errmsg[result];
+	printf("\n");
+	if(result!=0)
+		fprintf(stderr, msj);
+	
 	return result;
-	
-	
 }
 
