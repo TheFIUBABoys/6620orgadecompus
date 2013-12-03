@@ -5,11 +5,6 @@
 	.globl	reverse
 	.ent	reverse
 reverse:
-	.frame $fp,40,ra
-	.set noreorder
-	.cpload t9
-	.set reorder
-	.cprestore 16
 	subu	sp, sp, 32
 	sw	ra, 24(sp)
 	sw	$fp, 20(sp)
@@ -47,8 +42,7 @@ readFile:
 	bltz a3, read_error
 	
 fileLoop:
-	move s2, v0			# s2 <- read status
-	beqz s2, endFile	# eof validation
+	beqz v0, endFile	# eof validation
 	
 	addiu s5, s5, 1		# Add 1 to lenght
 	addiu t0, s5, 1		# t0 <- length + 1
@@ -104,32 +98,22 @@ endIncrease:
 	
 	
 endFile:
-	beqz	s5, endGood	# No data readed
-	li		t0, 1		# t0 <- 1
-	beq		t0, s5, add_end_line_character	# Just one \n readed
-	
-	move	s7, s5		# s7 <- fileLength
-	beqz s2, substractOne	# If end file there is no \n at the end of the string
-	b substractTwo			# Otherwise \n won't be reversed
+	beqz	s5, endGood		# No data readed
 
-substractOne:
+	move	s7, s5		# s7 <- fileLength
 	subu	s7, s7, 1	# fileLength = fileLength - 1
-	b reverseLoop
-	
-substractTwo:
-	subu	s7, s7, 2	# fileLength = fileLength - 2
 	
 reverseLoop:
-	addu	t0, s7, s4		# t0 <- buffer element index
+	addu	t0, s7, s4		# t2 <- buffer element index
 
 	li		v0, SYS_write	# system call for write to file
 	move	a0, s1			# file descriptor
 	move	a1, t0			# address of buffer from which to write
 	li		a2, 1			# write length
 	syscall					# write to file
-	bltz a3, write_error 	# write error comprobation
+	bltz a3, write_error 	#write error comprobation
 	
-	beqz	s7, add_end_line_character	# end reverting string
+	beqz	s7, readFile	# end reverting string
 
 	subu	s7, s7, 1	# buffer index - 1
 	
@@ -146,27 +130,8 @@ write_error:
 malloc_error:
 	li v0, 3
 	b end 
-	
 endGood:
 	li v0, 0 # error code 0, termina bien	
-	b end
-	
-add_end_line_character:
-	beqz s2, endGood
-	
-	move	s7, s5		# s7 <- fileLength
-	subu	s7, s7, 1	# fileLength = fileLength - 1
-	addu	t0, s7, s4	# t0 <- buffer element index
-	
-	li		v0, SYS_write	# system call for write to file
-	move	a0, s1			# file descriptor
-	move	a1, t0			# address of buffer from which to write
-	li		a2, 1			# write length
-	syscall					# write to file
-	bltz a3, write_error 	#write error comprobation
-	
-	b readFile
-	
 end:
 	lw	ra, 24(sp)
 	lw	$fp, 20(sp)

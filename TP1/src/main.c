@@ -7,14 +7,10 @@
 #include "reverse.h"
 int main(int argc, char** argv) {
 	
-	//int fPtr = 0;
-	FILE* outFd = fopen("salida.out","w");
 	// Rev from stdin.
 	if( argc == 1 ) {
-		//reverse(STDIN_FILENO, fileno( outFd ));
-		reverse(STDIN_FILENO, 1);
-		fclose(outFd);
-		return 0;
+		int res = reverseS(STDIN_FILENO,1 );
+		return res;
 	}
 	
 	// Option may have been passed.
@@ -23,17 +19,13 @@ int main(int argc, char** argv) {
 		//if( checkOption(argv[1]) ) return 0;
 	}
 	unsigned i;
+	int res=0;
 	for( i = 1 ; i < argc ; i++ ) {
 		int fPtr = open(argv[i], O_RDONLY);
-		
-		// Handling opening file error.
-		if( !fPtr )
-		 fprintf(stderr, "Error: unable to open file %s\n", argv[i]);
-		else {
-			reverse(fPtr,fileno( outFd ));
-			close(fPtr);
-			fclose(outFd);
-		}
+		res = reverseS(fPtr,1);
+		close(fPtr);
+		if(res!=0)
+			exit(res);
 	}
-	return 0;
-}
+	return res;
+}	

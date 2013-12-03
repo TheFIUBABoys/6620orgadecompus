@@ -1,8 +1,9 @@
-#ifndef _CALLBACK_H_
-#define _CALLBACK_H_
+#ifndef _REVERSE_H_
+#define _REVERSE_H_
 
-extern int reverseS(int a, int B);
+extern int reverse(int a, int B);
+extern const char* reverse_errmsg[];
 
-int reverse(int infd, int outfd);
+int reverseS(int infd, int outfd);
 
-#endif
+#endif //_REVERSE_H
