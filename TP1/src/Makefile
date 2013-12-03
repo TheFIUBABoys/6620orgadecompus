@@ -1,23 +1,18 @@
-CFLAGS=-Wall -pedantic -std=c99 -g
+CFLAGS=-g -Wall -o x
 MEMFLAGS=valgrind --leak-check=full --track-origins=yes -v
 CC=gcc
 MAIN=main.c
-INPUT=reverse.c
-MIDDLEFILE=reverse.o
+REVERSE=reverse.S
+MYMALLOC=sys_mmap/mymalloc.S
 EXEC=main
 TESTSCRIPT=TestFiles/tests.sh
 
 all: $(EXEC) clean
 test: all runTests cleanExec
 
-
 .SILENT:
-$(MIDDLEFILE): reverse.h reverse.c 
-	$(CC) $(CFLAGS)  -c reverse.c
-
-.SILENT:
-$(EXEC): $(MIDDLEFILE) $(MAIN) 
-	$(CC) $(CFLAGS) $(MIDDLEFILE) $(MAIN) -o $(EXEC)
+$(EXEC): $(MAIN) $(REVERSE) $(MYMALLOC) 
+	$(CC) $(CFLAGS) $(MAIN) $(REVERSE) $(MYMALLOC) -o $(EXEC)
 
 .SILENT:	
 run: $(EXEC)
@@ -33,8 +28,8 @@ memCheck: $(EXEC)
 
 .SILENT:
 clean: $(MIDDLEFILE)
-	rm *.o
+	rm -f *.o
 
 .SILENT:
 cleanExec: $(EXEC)
-	rm $(EXEC)
+	rm -f $(EXEC)

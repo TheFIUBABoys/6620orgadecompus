@@ -8,10 +8,12 @@
 int main(int argc, char** argv) {
 	
 	//int fPtr = 0;
-	int outFd = open("salida.out",O_WRONLY);
+	FILE* outFd = fopen("salida.out","w");
 	// Rev from stdin.
 	if( argc == 1 ) {
-		reverse(STDIN_FILENO,outFd);
+		//reverse(STDIN_FILENO, fileno( outFd ));
+		reverse(STDIN_FILENO, 1);
+		fclose(outFd);
 		return 0;
 	}
 	
@@ -28,9 +30,9 @@ int main(int argc, char** argv) {
 		if( !fPtr )
 		 fprintf(stderr, "Error: unable to open file %s\n", argv[i]);
 		else {
-			reverse(fPtr,outFd);
+			reverse(fPtr,fileno( outFd ));
 			close(fPtr);
-			close(outFd);
+			fclose(outFd);
 		}
 	}
 	return 0;
