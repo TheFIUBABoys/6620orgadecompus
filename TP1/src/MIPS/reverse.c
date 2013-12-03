@@ -10,9 +10,8 @@
 int reverseS(int infd, int outfd)
 {
 	int result=0;
-	int result = reverse(infd,outfd);
+	result = reverse(infd,outfd);
 	const char* msj = reverse_errmsg[result];
-	printf("\n");
 	if(result!=0)
 		fprintf(stderr, msj);
 	

@@ -6,7 +6,7 @@ REVERSEC=reverse.o
 
 REVERSE=reverse.S
 MYMALLOC=sys_mmap/mymalloc.S
-EXEC=main
+EXEC=tp1
 TESTSCRIPT=TestFiles/tests.sh
 
 all: $(EXEC) clean

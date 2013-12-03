@@ -5,11 +5,6 @@
 	.globl	reverse
 	.ent	reverse
 reverse:
-	.frame $fp,40,ra
-	.set noreorder
-	.cpload t9
-	.set reorder
-	.cprestore 16
 	subu	sp, sp, 32
 	sw	ra, 24(sp)
 	sw	$fp, 20(sp)

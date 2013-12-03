@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 	
 	// Rev from stdin.
 	if( argc == 1 ) {
-		int res = reverseS(STDIN_FILENO, STDERR_FILENO);
+		int res = reverseS(STDIN_FILENO,1 );
 		return res;
 	}
 	
@@ -19,11 +19,13 @@ int main(int argc, char** argv) {
 		//if( checkOption(argv[1]) ) return 0;
 	}
 	unsigned i;
+	int res=0;
 	for( i = 1 ; i < argc ; i++ ) {
 		int fPtr = open(argv[i], O_RDONLY);
-		int res= reverseS(fPtr,STDERR_FILENO);
-			close(fPtr);
-		
+		res = reverseS(fPtr,1);
+		close(fPtr);
+		if(res!=0)
+			exit(res);
 	}
-	return 0;
-}
+	return res;
+}	
